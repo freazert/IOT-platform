@@ -15,6 +15,9 @@ class CreateSensorKindsTable extends Migration
     {
         Schema::create('sensor_kinds', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name_kind');
+            $table->string('picture');
+            $table->string('description');
             $table->timestamps();
         });
     }
