@@ -13,4 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('sensorimage', 'REST\SensorImageController');
+Route::resource('/sensors', 'Api\SensorController');
+//Route::resource('sensors', '')
