@@ -17,10 +17,10 @@
                 <div class="collapse navbar-collapse" id="navbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active">
-                            <router-link to="/create"> Go to Index</router-link>
+                            <router-link to="/Index"> Go to Index</router-link>
                         </li>
                         <li>
-                             <router-link to="/post"> Go to Index</router-link>
+                             <router-link to="/Create"> Go to Create</router-link>
                         </li>
                     </ul>
                 </div>

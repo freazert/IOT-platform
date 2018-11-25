@@ -1,16 +1,16 @@
 import VueRouter from 'vue-router';
-import create from './components/Create.vue';
-import post from './components/Post.vue';
+import Create from './components/Create.vue';
+import Index from './components/Index.vue';
 
 
 let routes =[
     {
-        path: '/create',
-        component: create,
+        path: '/Create',
+        component: Create,
     },
     {
-        path: '/Post',
-        component: post,
+        path: '/Index',
+        component: Index,
     },
 ]
 export default new VueRouter({

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sensors extends Model
 {
+    protected $fillable = ['sensor_name', 'type', 'description'];
+
     //has different types
     public function values()
     {
