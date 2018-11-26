@@ -46,6 +46,18 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-3 control-label" for="image">Add an image</label>
+                        <div class="col-md-9" :class="{'has-error': errors.image}">
+                                    <input id="file" 
+                                    @change="onFileSelected"  
+                                    type="file"
+                                   placeholder="type"
+                                   class="form-control">
+                            <span v-if="errors.image" class="help-block text-danger">{{ errors.description[0] }}</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-md-12 text-right">
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
@@ -67,12 +79,19 @@
                     sensor_name: null,
                     type: null,
                     description: null,
+                    image: []
                 }
             };
         },
 
         methods: {
+            onFileSelected(event)
+            {
+                this.sensor.image = event.target.files[0];
+                console.log(this.sensor);
+            },
             onSubmit() {
+                console.log(this.sensor.image);
                 this.saved = false;
                 axios.post('api/sensors', this.sensor)
                     .then(({data}) => this.setSuccessMessage())
@@ -92,7 +111,8 @@
 
             reset() {
                 this.errors = [];
-                this.sensor = {sensor_name: null, type: null, description: null};
+                this.sensor = {sensor_name: null, type: null, description: null, image: []};
+                document.getElementById("file").value = "";
             }
         }
     }

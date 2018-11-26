@@ -39,9 +39,12 @@ class SensorController extends Controller
             'type' => 'required|min:3|max:50',
             'description' => 'required|min:3'
         ]);
-
+        
         $sensor = Sensors::create($sensor);
-
+        if (isset($data['image'])) {
+            $user->addMediaFromRequest('image')->toMediaCollection('images');
+        }
+        
         return new SensorResource($sensor);
     }
 }

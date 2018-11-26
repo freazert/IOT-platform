@@ -3752,10 +3752,11 @@ var app = new Vue({
 
 
 var routes = [{
+
     path: '/Create',
     component: __WEBPACK_IMPORTED_MODULE_1__components_Create_vue___default.a
 }, {
-    path: '/Index',
+    path: '/',
     component: __WEBPACK_IMPORTED_MODULE_2__components_Index_vue___default.a
 }];
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -3873,6 +3874,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -3882,16 +3895,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             sensor: {
                 sensor_name: null,
                 type: null,
-                description: null
+                description: null,
+                image: []
             }
         };
     },
 
 
     methods: {
+        onFileSelected: function onFileSelected(event) {
+            this.sensor.image = event.target.files[0];
+            console.log(this.sensor);
+        },
         onSubmit: function onSubmit() {
             var _this = this;
 
+            console.log(this.sensor.image);
             this.saved = false;
             axios.post('api/sensors', this.sensor).then(function (_ref) {
                 var data = _ref.data;
@@ -3911,7 +3930,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         reset: function reset() {
             this.errors = [];
-            this.sensor = { sensor_name: null, type: null, description: null };
+            this.sensor = { sensor_name: null, type: null, description: null, image: [] };
+            document.getElementById("file").value = "";
         }
     }
 });
@@ -4095,6 +4115,38 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _vm.errors.description
+                    ? _c("span", { staticClass: "help-block text-danger" }, [
+                        _vm._v(_vm._s(_vm.errors.description[0]))
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col-md-3 control-label",
+                  attrs: { for: "image" }
+                },
+                [_vm._v("Add an image")]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "col-md-9",
+                  class: { "has-error": _vm.errors.image }
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { id: "file", type: "file", placeholder: "type" },
+                    on: { change: _vm.onFileSelected }
+                  }),
+                  _vm._v(" "),
+                  _vm.errors.image
                     ? _c("span", { staticClass: "help-block text-danger" }, [
                         _vm._v(_vm._s(_vm.errors.description[0]))
                       ])

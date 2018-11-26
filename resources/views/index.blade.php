@@ -22,6 +22,9 @@
                         <li>
                              <router-link to="/Create"> Go to Create</router-link>
                         </li>
+                        <li>
+                        <a href="/home">{{{ isset(Auth::user()->name) ? Auth::user()->name : "login" }}}</a>
+                        </li>
                     </ul>
                 </div>
             </div>

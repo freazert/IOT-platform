@@ -4,12 +4,14 @@ import Index from './components/Index.vue';
 
 
 let routes =[
+    
     {
+        
         path: '/Create',
         component: Create,
     },
     {
-        path: '/Index',
+        path: '/',
         component: Index,
     },
 ]
